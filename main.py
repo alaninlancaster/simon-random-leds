@@ -3,10 +3,11 @@ def on_button_pressed_a():
     sequence_length += 1
     create_sequences(sequence_length)
     while index <= sequence_length - 1:
-        music.play_tone(note_sequence[index], music.beat(BeatFraction.WHOLE))
         pins.digital_write_pin(pin_sequence[index], 1)
+        music.play_tone(note_sequence[index], music.beat(BeatFraction.WHOLE))
         basic.pause(200)
         pins.digital_write_pin(pin_sequence[index], 0)
+        index += 1
         index += 1
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
@@ -29,7 +30,8 @@ my_notes: List[number] = []
 my_pins: List[number] = []
 sequences: List[number] = []
 pin_sequence: List[number] = []
+index3 = 0
 index = 0
-my_pins = [DigitalPin.P0, DigitalPin.P1, DigitalPin.P2, DigitalPin.P3]
+my_pins = [DigitalPin.P1, DigitalPin.P2, DigitalPin.P3, DigitalPin.P4]
 my_notes = [262, 294, 330, 349]
 sequence_length = 0
