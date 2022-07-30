@@ -4,8 +4,15 @@ input.onButtonPressed(Button.A, function () {
     for (let index = 0; index <= sequence_length - 1; index++) {
         pins.digitalWritePin(pin_sequence[index], 1)
 music.playTone(note_sequence[index], music.beat(BeatFraction.Whole))
-        basic.pause(200)
+        basic.pause(100)
         pins.digitalWritePin(pin_sequence[index], 0)
+basic.pause(100)
+        correct = true
+        for (let index = 0; index <= sequence_length - 1; index++) {
+            if (input.pinIsPressed(TouchPin.P0)) {
+            	
+            }
+        }
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -26,6 +33,7 @@ let my_note = 0
 let my_pin = 0
 let random_number = 0
 let pin_sequence: number[] = []
+let correct = false
 let note_sequence: number[] = []
 let sequence_length = 0
 let my_notes: number[] = []
@@ -43,3 +51,4 @@ my_notes = [
 349
 ]
 sequence_length = 0
+pins.setAudioPinEnabled(false)
