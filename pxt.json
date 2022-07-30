@@ -1,5 +1,5 @@
 {
-    "name": "simon-random-leds",
+    "name": "simon-increment-sequence",
     "description": "",
     "dependencies": {
         "core": "*",
