@@ -1,44 +1,35 @@
-input.onButtonPressed(Button.A, function () {
+def on_button_pressed_a():
+    global sequence_length, index
     sequence_length += 1
-    sequences = create_sequences(sequence_length)
-    for (let index = 0; index <= note_sequence.length - 1; index++) {
-    	
-    }
-})
-function create_sequences (num: number) {
+    create_sequences(sequence_length)
+    while index <= sequence_length - 1:
+        music.play_tone(note_sequence[index], music.beat(BeatFraction.WHOLE))
+        pins.digital_write_pin(pin_sequence[index], 1)
+        basic.pause(200)
+        pins.digital_write_pin(pin_sequence[index], 0)
+        index += 1
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def create_sequences(num: number):
+    global pin_sequence, note_sequence, random_number, my_pin, my_note
     pin_sequence = []
     note_sequence = []
-    sequences = []
-    for (let index = 0; index < num; index++) {
+    for index2 in range(num):
         random_number = randint(0, 3)
         my_pin = my_pins[random_number]
-        pin_sequence.push(my_pin)
+        pin_sequence.append(my_pin)
         my_note = my_notes[random_number]
-        note_sequence.push(my_note)
-    }
-    sequences.push(pin_sequence)
-    sequences.push(note_sequence)
-    return sequences
-}
-let my_note = 0
-let my_pin = 0
-let random_number = 0
-let pin_sequence: number[] = []
-let note_sequence: number[] = []
-let sequences: Array[] = []
-let sequence_length = 0
-let my_notes: number[] = []
-let my_pins: number[] = []
-my_pins = [
-DigitalPin.P0,
-DigitalPin.P1,
-DigitalPin.P2,
-DigitalPin.P3
-]
-my_notes = [
-262,
-294,
-330,
-349
-]
+        note_sequence.append(my_note)
+my_note = 0
+my_pin = 0
+random_number = 0
+note_sequence: List[number] = []
+sequence_length = 0
+my_notes: List[number] = []
+my_pins: List[number] = []
+sequences: List[number] = []
+pin_sequence: List[number] = []
+index = 0
+my_pins = [DigitalPin.P0, DigitalPin.P1, DigitalPin.P2, DigitalPin.P3]
+my_notes = [262, 294, 330, 349]
 sequence_length = 0
