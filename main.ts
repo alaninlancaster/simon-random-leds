@@ -8,10 +8,13 @@ music.playTone(note_sequence[index], music.beat(BeatFraction.Whole))
         pins.digitalWritePin(pin_sequence[index], 0)
     }
 })
+input.onButtonPressed(Button.B, function () {
+    sequence_length = 0
+})
 function create_sequences (num: number) {
     pin_sequence = []
     note_sequence = []
-    for (let index2 = 0; index2 < num; index2++) {
+    for (let index = 0; index < num; index++) {
         random_number = randint(0, 3)
         my_pin = my_pins[random_number]
         pin_sequence.push(my_pin)
@@ -22,14 +25,11 @@ function create_sequences (num: number) {
 let my_note = 0
 let my_pin = 0
 let random_number = 0
+let pin_sequence: number[] = []
 let note_sequence: number[] = []
 let sequence_length = 0
 let my_notes: number[] = []
 let my_pins: number[] = []
-let index = 0
-let index3 = 0
-let pin_sequence : number[] = []
-let sequences: number[] = []
 my_pins = [
 DigitalPin.P1,
 DigitalPin.P2,
